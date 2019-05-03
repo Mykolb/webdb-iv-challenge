@@ -25,9 +25,16 @@ router.get('/', (req, res) => {
 })
 
 //ADD A DISH
-
-   
-
+router.post('/', (req, res) => {
+  db('dish')
+  .insert(req.body, 'name')
+  .then(id => {
+      res.status(201).json(id)
+  })
+  .catch(err => {
+      res.status(500).json({ error: err, message: 'There was an error creating the data'})
+  })
+})
 
 
 
