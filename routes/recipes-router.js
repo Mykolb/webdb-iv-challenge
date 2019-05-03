@@ -11,6 +11,7 @@ const knexConfig = {
 
 const db = knex(knexConfig);
 
+//GET RECIPES
 router.get('/', (req, res) => {
     db('recipes') //has to be the same name as the table name 
     .then(recipes => {
@@ -22,7 +23,17 @@ router.get('/', (req, res) => {
     })
 })
 
-
+//ADD RECIPES
+router.post('/', (req, res) => {
+    db('recipes')
+    .insert(req.body, 'name')
+    .then(id => {
+        res.status(201).json(id)
+    })
+    .catch(err => {
+        res.status(500).json({ error: err, message: 'There was an error creating the recipe'})
+    })
+  })
 
 
 module.exports = router;
