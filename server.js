@@ -4,6 +4,7 @@ const morgan = require('morgan');
 
 //router
 const dishesRouter = require('./routes/dishes-router');
+const recipesRouter = require('./routes/recipes-router');
 
 const server = express();
 
@@ -14,6 +15,7 @@ server.use(morgan('dev'));
 
 
 server.use('/api/dishes', dishesRouter);
+server.use('/api/recipes', recipesRouter);
 
 server.get('/', (req, res) => {
     res.send(`
