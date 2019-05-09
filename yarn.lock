@@ -343,6 +343,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+cleaner@^2.0.0-alpha:
+  version "2.0.0-alpha"
+  resolved "https://registry.yarnpkg.com/cleaner/-/cleaner-2.0.0-alpha.tgz#9d0faf23b359c423e3d799814e11ec6b4fdfbcc4"
+  integrity sha1-nQ+vI7NZxCPj15mBThHsa0/fvMQ=
+
 cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"

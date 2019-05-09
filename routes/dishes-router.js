@@ -1,20 +1,13 @@
-const knex = require('knex');
+
 const router = require('express').Router();
 
-const knexConfig = {
-    client: 'sqlite3',
-    connection: {
-      filename: './data/lambda.db3',
-    },
-    useNullAsDefault: true, // needed for sqlite
-  };
-
-const db = knex(knexConfig);
+const db = require('./dishes-model')
 
 
 //GET 
+//WORKING
 router.get('/', (req, res) => {
-    db('dish') //has to be the same name as the table name 
+    db.find() //has to be the same name as the table name 
     .then(dishes => {
         console.log('dish')
         res.status(200).json(dishes)
@@ -24,9 +17,29 @@ router.get('/', (req, res) => {
     })
 })
 
+//GET by ID
+router.get('/:id', (req, res) => {
+  const id = req.params.id 
+  db.findById()
+    //  .first()
+     .then(dish => {
+         if(dish) {
+           res.status(200).json(dish);
+         } else {
+         res.status(404).json({ message: 'The dish associated with this id cannot be found' });
+         }
+     })
+     .catch(err => {
+         res.status(500).json({ error: err, message: 'There was an error retrieving the data'})
+     })
+ });
+
+
+
 //ADD A DISH
+//WORKING
 router.post('/', (req, res) => {
-  db('dish')
+  db.add()
   .insert(req.body, 'name')
   .then(id => {
       res.status(201).json(id)
@@ -35,8 +48,6 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: err, message: 'There was an error creating the data'})
   })
 })
-
-
 
 
 
