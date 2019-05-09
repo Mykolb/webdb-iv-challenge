@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 //GET by ID
 router.get('/:id', (req, res) => {
-  const id = req.params.id 
+  // const id = req.params.id 
   db.findById()
     //  .first()
      .then(dish => {
